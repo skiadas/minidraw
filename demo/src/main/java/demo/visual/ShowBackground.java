@@ -1,4 +1,4 @@
-package minidraw.visual;
+package demo.visual;
 
 import minidraw.framework.DrawingEditor;
 import minidraw.standard.MiniDrawApplication;

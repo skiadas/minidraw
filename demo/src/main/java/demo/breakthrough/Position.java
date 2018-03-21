@@ -1,4 +1,4 @@
-package minidraw.breakthrough;
+package demo.breakthrough;
 
 /**
  * Position on the chess board.

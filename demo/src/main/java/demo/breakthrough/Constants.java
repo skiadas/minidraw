@@ -1,4 +1,4 @@
-package minidraw.breakthrough;
+package demo.breakthrough;
 
 /**
  * Collection of global constants. 

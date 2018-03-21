@@ -1,4 +1,4 @@
-package minidraw.visual;
+package demo.visual;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
