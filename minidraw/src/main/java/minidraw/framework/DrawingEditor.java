@@ -54,8 +54,11 @@ package minidraw.framework;
  * 1.10: Updated ImageManager so a) actually works in a gradle context: put
  * all your wanted images in /src/main/resources/minidraw/ subfolder in
  * the default gradle project structure.
+ *
+ * 1.11: Redefined the image folder for Gradle builds to be 
+ * /src/main/resources/minidraw-images to avoid conflicts in resource loading
  * 
- * Copyright 2010 Henrik Baerbak Christensen
+ * Copyright 2018 Henrik Baerbak Christensen
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
