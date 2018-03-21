@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!-- MiniDraw Framework Source Code. 
+
+   Copyright 2010 Henrik Baerbak Christensen
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+
+<project name="minidraw" default="help" basedir=".">
+
+	<property name="source" value="src"/>
+	<property name="test" value="test"/>
+	<property name="build" value="build"/>
+	<property name="deploy" value="deploy"/>
+	<property name="doc" value="doc"/>
+	<property name="resource" value="resource"/>
+
+	<property name="srcjarname" value="minidraw.jar"/>
+	<property name="javadocjarname" value="minidraw-javadoc.jar"/>
+
+	<!-- Force compilation to output Java 6 version class files
+  to make the jar file easier to cope with for older versions
+  installed compilers. The code itself is java 1.5 -->
+	<property name="ant.build.javac.source" value="1.6" />
+	<property name="ant.build.javac.target" value="1.6"/>
+
+	<!-- Properties from shell -->
+	<property environment="env"/>
+
+	<!-- Classpath -->
+	<path id="_classpath">
+		<pathelement path="${build}"/>
+	</path>
+
+	<path id="_srcpath">
+		<pathelement path="${source}"/>
+	</path>
+
+	<path id="_testsrcpath">
+		<pathelement path="${test}"/>
+	</path>
+
+	<target name="prepare">
+		<mkdir dir="${build}">
+		</mkdir>
+	</target>
+
+	<!-- Help -->
+	<target name="help">
+		<echo>
+Ant build system for MiniDraw.
+   Testing:
+     background:   Just show a background image.
+     figures:      ImageFigures and SelectionTool.
+     composite:    Composite figure testing.
+     multiview:    Multi view testing.
+     add:          Add and remove figures, show custom tool.
+     message:      Show Messages in status field.
+     key:          Show key events in status field.
+  
+  Demonstration:
+     rect:         Rectangle demo.
+     puzzle:       Simple jigsaw puzzle.
+
+  Deployment:
+     doc:          Generate JavaDoc in folder "doc".
+     jar:          Make source and javadoc jar in folder "deploy".
+
+  Experimental:
+     breakthrough: Demo 'boardgame' package in MiniDraw.
+    </echo>
+	</target>
+
+	<!-- Core classes -->
+	<target name="build_src" depends="prepare">
+		<javac 
+       destdir="${build}"
+       includeantruntime="false"
+       debug="on"
+       >
+			<src>
+				<path refid="_srcpath"/>
+			</src>
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="build_demo" depends="prepare">
+		<javac 
+       destdir="${build}"
+       includeantruntime="false"
+       debug="on">
+			<src>
+				<path refid="_demopath"/>
+			</src>
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</javac>
+	</target>
+
+
+	<target name="build_test" depends="build_src">
+		<javac 
+       destdir="${build}"
+       includeantruntime="false"
+       debug="on">
+			<src>
+				<path refid="_testsrcpath"/>
+			</src>
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="copy_resource" depends="prepare">
+		<copy todir="${build}\${resource}" >
+			<fileset dir="${resource}">
+				<include name="*.gif"/>
+				<include name="*.lst"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- BUILD ALL -->
+	<target name="build_all" depends="build_src,build_test,copy_resource">
+	</target>
+	<target name="build_all_src" depends="build_src,copy_resource">
+	</target>
+
+	<!-- CLEAN -->
+	<target name="clean">
+		<delete dir="${build}">
+		</delete>
+		<delete dir="${doc}">
+		</delete>
+		<delete dir="${deploy}">
+		</delete>
+	</target>
+
+	<!-- JHotDraw testing of graphical functionality -->
+	<target name="background" depends="build_all">
+		<java fork="yes" classname="minidraw.visual.ShowBackground">
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</java>
+	</target>
+	<target name="figures" depends="build_all">
+		<java fork="yes" classname="minidraw.visual.ShowFigures">
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="composite" depends="build_all">
+		<java fork="yes" classname="minidraw.visual.ShowCompositeFigure">
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="multiview" depends="build_all">
+		<java fork="yes" classname="minidraw.visual.MultiView">
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="add" depends="build_all">
+		<java fork="yes" classname="minidraw.visual.AddRemoveFigures">
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="message" depends="build_all">
+		<java fork="yes" classname="minidraw.visual.ShowMessage">
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="key" depends="build_all">
+		<java fork="yes" classname="minidraw.visual.KeyShow">
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="puzzle" depends="build_all">
+		<java fork="yes" classname="minidraw.visual.LogoPuzzle">
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="rect" depends="build_all">
+		<java fork="yes" classname="minidraw.visual.ShowRectangle">
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="breakthrough" depends="build_all">
+		<java fork="yes" classname="minidraw.breakthrough.BreakThrough">
+			<classpath>
+				<path refid="_classpath" />
+			</classpath>
+		</java>
+	</target>
+
+	<!-- Make JavaDoc : run your web browser on doc/index.html !-->
+	<target name="mkdirdoc">
+		<mkdir dir="${doc}">
+		</mkdir>
+	</target>
+
+	<target name="copy_doc_resource">
+		<copy todir="${doc}" >
+			<fileset dir="${source}">
+				<include name="**/*.gif"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="doc" depends="clean,build_src,mkdirdoc,copy_doc_resource">
+		<javadoc
+       source = "1.5"
+       packagenames=
+       "minidraw.*"
+       sourcepath="${source}"
+       destdir="${doc}"
+       package="true"
+       doctitle="&lt;b&gt;MiniDraw&lt;/b&gt;"
+       bottom="From the book: &lt;b&gt;Flexible, Reliable Software&lt;/b&gt;, &#169; CRC Press 2010. Author: Henrik B. Christensen, Aarhus University, Denmark"
+
+       windowtitle="MiniDraw by Henrik B. Christensen"
+       >
+			<sourcepath>
+				<path refid="_srcpath"/>
+			</sourcepath>
+			<classpath>
+				<path refid="_classpath"/>
+			</classpath>
+		</javadoc>
+	</target>
+
+
+	<!-- JAR Everything -->
+	<target name="mkdir_deploy">
+		<mkdir dir="${deploy}">
+		</mkdir>
+	</target>
+
+	<target name="jar" 
+	  depends="clean,mkdir_deploy,build_src,doc">
+		<jar jarfile="${deploy}/${srcjarname}" basedir="${build}"/>
+		<jar jarfile="${deploy}/${javadocjarname}" basedir="${doc}"/>
+	</target>
+</project>
+
+
