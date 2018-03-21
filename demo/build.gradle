@@ -1,0 +1,21 @@
+/*
+ * Build file for MiniDraw Demo applications, by Henrik Baerbak Christensen.
+ */
+
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+  compile project(':minidraw')
+}
+
+task background(type: JavaExec) {
+  group 'demo'
+  description 'Just show a background image.'
+
+  classpath sourceSets.test.runtimeClasspath
+  main = 'minidraw.visual.ShowBackground'
+}

@@ -12,10 +12,3 @@ dependencies {
 
 }
 
-task background(type: JavaExec) {
-  group 'demo'
-  description 'Just show a background image.'
-
-  classpath sourceSets.test.runtimeClasspath
-  main = 'minidraw.visual.ShowBackground'
-}
