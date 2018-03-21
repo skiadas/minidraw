@@ -63,8 +63,8 @@ public class ImageManager {
   public Image getImage(String shortName) {
     Image img = name2Image.get(shortName);
     if (img == null) {
-      throw new RuntimeException("ImageManager: No image named " + shortName
-              + " has been found in " + resourceFolder + " folder.");
+      throw new RuntimeException("ImageManager: No image named '" + shortName
+              + "' has been found in " + resourceRootURL + " folder.");
     }
     return img;
   }
@@ -96,7 +96,8 @@ public class ImageManager {
       Image img = loadImage(s, resourceRootURL);
       if (img == null) {
         throw new RuntimeException(
-                "ImageManager: Did not find image named " + s);
+                "ImageManager: Did not find image named " + s
+                        + ", was looking in " + resourceRootURL);
       }
       String filenameNoExtension = s.substring(0, s.length() - 4);
       name2Image.put(filenameNoExtension, img);
