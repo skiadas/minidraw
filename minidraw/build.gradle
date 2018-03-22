@@ -24,7 +24,7 @@ publishing {
             from components.java
             groupId 'henrikbaerbak'
             artifactId 'minidraw'
-            version '1.11'
+            version '1.12'
         }
     }
 }
@@ -37,12 +37,15 @@ bintray {
   pkg {
         repo = 'minidraw'
         name = 'minidraw-lib'
+        websiteUrl = 'http://www.baerbak.com'
         licenses = ['Apache-2.0']
         publicDownloadNumbers = true
-        labels = ['graphics', 'jhotdraw', 'flexible-reliable-software', 'teaching']
-        vcsUrl = 'git@bitbucket.com:henrikbaerbak/minidraw.git'
+        labels = ['graphics', 'jhotdraw',
+               'flexible-reliable-software', 'teaching']
+        vcsUrl =
+          'https://henrikbaerbak@bitbucket.org/henrikbaerbak/minidraw.git'
         version {
-          name = '1.11'
+          name = '1.12'
         }
     }
 }
