@@ -13,10 +13,28 @@ dependencies {
   compile files('lib/minidraw.jar')
 }
 
+// === Demonstration of various MiniDraw features
+
 task background(type: JavaExec) {
   group 'demo'
   description 'Just show a background image.'
 
   classpath sourceSets.test.runtimeClasspath
   main = 'demo.visual.ShowBackground'
+}
+
+task puzzle(type: JavaExec) {
+  group 'demo'
+  description 'Simple jigsaw puzzle.'
+
+  classpath sourceSets.test.runtimeClasspath
+  main = 'minidraw.visual.LogoPuzzle'
+}
+
+task breakthrough(type: JavaExec) {
+  group 'demo'
+  description 'Demo boardgame package in MiniDraw.'
+
+  classpath sourceSets.test.runtimeClasspath
+  main = 'minidraw.breakthrough.BreakThrough'
 }

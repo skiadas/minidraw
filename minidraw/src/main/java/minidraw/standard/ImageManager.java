@@ -33,7 +33,7 @@ public class ImageManager {
    * /src/main/resources/minidraw/ folder of gradle, which maps simply
    * to /minidraw once build using gradle.
    */
-  private static final String RESOURCE_PATH_GRADLE = "/minidraw";
+  private static final String RESOURCE_PATH_GRADLE = "/minidraw-images";
 
   // Will be set after construction to one of the two above paths
   private String resourceFolder;
