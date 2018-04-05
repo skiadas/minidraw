@@ -12,7 +12,31 @@ by Henrik Bærbak Christensen, published by CRC Press 2010.
 Credits
 ---
 
-The architecture and some of the code base is from JHotDraw 5.1.
+The architecture and some of the code base is from JHotDraw 5.1,
+originally developed by Erich Gamma and Thomas Eggenschwiler.
+
+How to Use
+---
+
+To add MiniDraw to your gradle project, update 'build.gradle' to
+include the Bintray repository and include a compile dependency such
+as:
+
+
+    repositories {
+        jcenter()
+        maven {
+          url 'https://dl.bintray.com/henrikbaerbak/maven'
+        }
+    }
+
+    dependencies {
+        compile 'com.baerbak.maven:minidraw:1.11'
+    }
+
+Consult the 'demo' folder for various demonstrations of MiniDraw,
+and/or consult the book *Flexible, Reliable Software - using Patterns
+and Agile Development*.
 
 Prereqs
 ---
@@ -28,7 +52,7 @@ Note: You may have to comment out the two includes in `settings.gradle`
 to make this work. Reenable the includes again after installing the
 gradle wrapper.
 
-How to Use
+How to Use this Repository
 ---
 
 The project contains two folders
