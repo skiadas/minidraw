@@ -46,6 +46,9 @@ Software*.
 Review the `build.gradle` file in folder `demo` for a complete list of
 demonstrations.
 
+Note that these demonstration programs will link directly to the
+compiled minidraw project, not to the published version on BinTray.
+
 
 How to publish
 ---
