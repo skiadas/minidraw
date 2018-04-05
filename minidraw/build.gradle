@@ -33,17 +33,53 @@ artifacts {
     archives javadocJar
 }
 
+// === Define the POM requirements by Maven
+
+// Create the pom configuration:
+def pomConfig = {
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "henrikbaerbak"
+            name "Henrik Bærbak Christensen"
+            email "info@baerbak.com"
+            organization "Imhotep"
+            organizationUrl "http://www.baerbak.com"
+        }
+    }
+    
+    scm {
+       url "https://henrikbaerbak@bitbucket.org/henrikbaerbak/minidraw.git"
+       connection "scm:git:git://bitbucket.org/henrikbaerbak/minidraw.git"
+       developerConnection "scm:git:git://bitbucket.org/henrikbaerbak/minidraw.git"
+    }
+}
 // === Define Maven Repository details
 publishing {
     publications {
         MyPublication(MavenPublication) {
             from components.java
-            groupId 'henrikbaerbak'
+            groupId 'com.baerbak.maven'
             artifactId 'minidraw'
             version '1.11'
 
             artifact sourcesJar
             artifact javadocJar
+
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description',
+                'MiniDraw - A 2D graphics direct manipulation library for Teaching.')
+                root.appendNode('name', 'MiniDraw')
+                root.appendNode('url', 'http://www.baerbak.com')
+                root.children().last() + pomConfig
+            }
         }
     }
 }
