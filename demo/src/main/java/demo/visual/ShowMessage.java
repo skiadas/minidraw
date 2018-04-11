@@ -13,11 +13,10 @@ public class ShowMessage {
 
   public static void main(String[] args) {
     DrawingEditor window = new MiniDrawApplication(
-        "Click to see messages in status field", new Test2Factory());
+        "Click to see messages in status field", new ChessBackgroundTextFieldFactory());
     window.open();
 
     window.setTool(new DisplayMessageTool(window));
-
   }
 }
 

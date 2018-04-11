@@ -14,7 +14,7 @@ public class KeyShow {
   public static void main(String[] args) {
     DrawingEditor window = new MiniDrawApplication(
         "See key presses on the status bar (mouse click first)",
-        new Test2Factory());
+        new ChessBackgroundTextFieldFactory());
     window.open();
 
     window.setTool(new DisplayKeyTool(window));

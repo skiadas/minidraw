@@ -9,7 +9,7 @@ import minidraw.standard.*;
  * A factory just for testing purposes. Defines a chess board background. 
 
  */
-class TestFactory implements Factory {
+class ChessBackgroundFactory implements Factory {
   @Override
   public DrawingView createDrawingView(DrawingEditor editor) {
     DrawingView view = new StdViewWithBackground(editor, "chessboard");

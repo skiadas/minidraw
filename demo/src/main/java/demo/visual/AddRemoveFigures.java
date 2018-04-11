@@ -15,7 +15,7 @@ public class AddRemoveFigures {
 
   public static void main(String[] args) {
     DrawingEditor window = new MiniDrawApplication(
-        "Add + Remove figures: Click for action", new TestFactory());
+        "Add + Remove figures: Click for action", new ChessBackgroundFactory());
     window.open();
 
     window.setTool(new AddRemoveTool(window));
