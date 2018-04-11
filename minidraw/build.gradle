@@ -33,6 +33,7 @@ artifacts {
     archives javadocJar
 }
 
+
 // === Define the POM requirements by Maven
 
 // Create the pom configuration:
@@ -60,6 +61,7 @@ def pomConfig = {
        developerConnection "scm:git:git://bitbucket.org/henrikbaerbak/minidraw.git"
     }
 }
+
 // === Define Maven Repository details
 publishing {
     publications {
