@@ -13,7 +13,7 @@ public class ShowCompositeFigure {
 
   public static void main(String[] args) {
     DrawingEditor window = new MiniDrawApplication(
-        "CompositeFigure test: moves as a unit", new TestFactory());
+        "CompositeFigure test: moves as a unit", new ChessBackgroundFactory());
     window.open();
 
     Figure blackKing = new ImageFigure("bking",

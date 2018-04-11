@@ -15,7 +15,7 @@ public class ShowFigures {
 
   public static void main(String[] args) {
     DrawingEditor editor = new MiniDrawApplication(
-        "Test: Figures appear; select tool works", new TestFactory());
+        "Test: Figures appear; select tool works", new ChessBackgroundFactory());
     editor.open();
     Figure blackKing = new ImageFigure("bking",
         new Point(14 + 3 * 40, 14 + 0 * 40));

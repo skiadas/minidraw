@@ -12,7 +12,7 @@ public class ShowBackground {
 
   public static void main(String[] args) {
     DrawingEditor window = new MiniDrawApplication(
-        "Static background image load testing", new TestFactory());
+        "Static background image load testing", new ChessBackgroundFactory());
     window.open();
   }
 }

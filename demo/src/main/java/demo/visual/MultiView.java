@@ -14,7 +14,7 @@ import minidraw.standard.*;
 public class MultiView {
 
   public static void main(String[] args) {
-    Factory f = new TestFactory();
+    Factory f = new ChessBackgroundFactory();
     DrawingEditor editor = new MiniDrawApplication("Multi view", f);
     editor.open();
 
