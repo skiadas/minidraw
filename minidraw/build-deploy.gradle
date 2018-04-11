@@ -1,0 +1,114 @@
+/*
+ * Deployment Build file for MiniDraw, by Henrik Baerbak Christensen.
+ */
+
+
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+// === Version information
+
+def props = new Properties()
+props.minidrawversion = '1.12'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+
+}
+
+// Define the sources and javadoc jars
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+
+// === Define the POM requirements by Maven
+
+// Create the pom configuration:
+def pomConfig = {
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "henrikbaerbak"
+            name "Henrik Bærbak Christensen"
+            email "info@baerbak.com"
+            organization "Imhotep"
+            organizationUrl "http://www.baerbak.com"
+        }
+    }
+    
+    scm {
+       url "https://henrikbaerbak@bitbucket.org/henrikbaerbak/minidraw.git"
+       connection "scm:git:git://bitbucket.org/henrikbaerbak/minidraw.git"
+       developerConnection "scm:git:git://bitbucket.org/henrikbaerbak/minidraw.git"
+    }
+}
+
+// === Define Maven Repository details
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'com.baerbak.maven'
+            artifactId 'minidraw'
+            version props.minidrawversion
+
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description',
+                'MiniDraw - A 2D graphics direct manipulation library for Teaching.')
+                root.appendNode('name', 'MiniDraw')
+                root.appendNode('url', 'http://www.baerbak.com')
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+// === Specification of upload to BinTray
+bintray {
+  user = 'henrikbaerbak'
+  key =   System.getenv('BINTRAY_KEY')
+  publications = ['MyPublication']
+  pkg {
+        repo = 'maven'
+        name = 'minidraw'
+        websiteUrl = 'http://www.baerbak.com'
+        licenses = ['Apache-2.0']
+        publicDownloadNumbers = true
+        labels = ['graphics', 'jhotdraw',
+               'flexible-reliable-software', 'teaching']
+        vcsUrl =
+          'https://henrikbaerbak@bitbucket.org/henrikbaerbak/minidraw.git'
+        version {
+          name = props.minidrawversion
+        }
+    }
+}
