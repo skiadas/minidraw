@@ -106,7 +106,16 @@ public class ImageManager {
 
   private String[] getAllImagesInResourceFolder() {
     String[] imageFileNameArray;// Get the directory
-    File dir = new File(resourceRootURL.getPath());
+
+    String resourcePath;
+    try {
+      resourcePath = URLDecoder.decode(resourceRootURL.getPath(), "UTF-8");
+    }
+    catch (UnsupportedEncodingException e) {
+      return null; // "UTF-8" is valid, so this should never happen
+    }
+    File dir = new File(resourcePath);
+
     // create a filter to find .GIF and other supported files.
     FilenameFilter filter = new FilenameFilter() {
       @Override
