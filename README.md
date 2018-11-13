@@ -73,5 +73,6 @@ Maven Central, using the \<bintray\> resolver.
 The version history
 ---
 
-You can find an overview of the versions in (minidraw/version-history.md).
+You can find an overview of the versions
+in [Version history](minidraw/version-history.md).
 
