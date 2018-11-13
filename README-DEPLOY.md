@@ -41,7 +41,7 @@ How to publish
       MiniDraw.
       
    5. Verify by `./gradlew -b minidraw/build-deploy.gradle
-      publishToMaveLocal` which publishes to the local .m2 folder,
+      publishToMavenLocal` which publishes to the local .m2 folder,
       that POM files and other artefacts are correct.
       
    6. Upload to bintray, `./gradlew clean :minidraw:bintrayUpload`.

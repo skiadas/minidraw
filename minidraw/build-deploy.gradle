@@ -2,7 +2,6 @@
  * Deployment Build file for MiniDraw, by Henrik Baerbak Christensen.
  */
 
-
 plugins {
     id "com.jfrog.bintray" version "1.7.3"
 }
@@ -13,7 +12,7 @@ apply plugin: 'maven-publish'
 // === Version information
 
 def props = new Properties()
-props.minidrawversion = '1.12'
+props.minidrawversion = '1.13'
 
 repositories {
     jcenter()
