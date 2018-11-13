@@ -63,10 +63,16 @@ MiniDraw is published at JCenter (not Maven Central), so
 you just have to add a dependency in your `build.gradle` script.
 
     dependencies {
-        compile 'com.baerbak.maven:minidraw:1.11'
+        compile 'com.baerbak.maven:minidraw:1.13'
     }
 
 If you use Ant as build management tool, you have to update your
 `ivysettings.xml` so dependencies are resolved from JCenter instead of
 Maven Central, using the \<bintray\> resolver.
+
+The version history
+---
+
+You can find an overview of the versions
+in [Version history](minidraw/version-history.md).
 

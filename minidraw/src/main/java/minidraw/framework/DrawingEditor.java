@@ -17,6 +17,8 @@ package minidraw.framework;
  * visible. B) Acts as Mediator for the various parts of MiniDraw. C) Allow
  * changing the active tool. D) Allow displaying a message in the status bar.
  * 
+ * Release history: See the 'version-history.md' in the /minidraw folder.
+ * 
  */
 
 /*
@@ -52,7 +54,7 @@ package minidraw.framework;
 public interface DrawingEditor {
 
   /** Version of Minidraw. */
-  public static final String VERSION = "1.12";
+  public static final String VERSION = "1.13";
 
   /**
    * get the drawing this editor is associated with
