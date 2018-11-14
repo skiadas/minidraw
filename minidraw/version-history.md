@@ -48,3 +48,6 @@ Release History of MiniDraw
   
  * 1.12: Moved MiniDraws to open source on BitBucket, created
    deployment structure using gradle, uploaded to JCenter.
+
+ * 1.13: Bugfix by Frederik Madsen, allow minidraw to load images from
+   folders with a space in the filename.
