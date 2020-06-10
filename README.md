@@ -76,3 +76,4 @@ The version history
 You can find an overview of the versions
 in [Version history](minidraw/version-history.md).
 
+(File copied from original repository on bitbucket)
